@@ -1,0 +1,47 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog id="createDialog" title="New Record" class="sapUiSmallMargin" afterClose=".closeDialog">
+		<content>
+		  <form:SimpleForm editable="true" id="createForm">
+				<Label text="Work Center"/>
+				<Select id="idWC">
+					<core:Item key="ELECENG" text="ELECENG" />
+					<core:Item key="EUS" text="EUS" />
+                    <core:Item key="CONSTRUC" text="CONSTRUC" />
+                    <core:Item key="ELECMTR" text="ELECMTR" />
+				</Select>
+
+				<Label text="Long Description"/>
+				<Input
+					id="idLongDescription"
+					showSuggestion="true">
+				</Input>
+
+				<Label text="Internal Order"/>				
+				<Input
+					id="idFInternalOrder"
+					showSuggestion="true">
+				</Input>
+
+				<Label text="Profit Center"/>
+				<Input
+					id="idFProfitCenter"
+					showSuggestion="true">
+				</Input>				
+				
+				<Label text="OP Code"/>				
+				<Input
+					id="idFOpCode"
+					showSuggestion="true">
+				</Input>
+		  </form:SimpleForm>
+		</content>
+		
+		<buttons>
+		<Button id="btnSubmit" text="Submit" press=".onSubmitDialog" />
+		<Button id="btnCancel" text="Cancel" press=".onCancelCreateDialog" />
+		</buttons>
+	  </Dialog>
+</core:FragmentDefinition>

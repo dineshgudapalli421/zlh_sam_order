@@ -1,0 +1,23 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog id="workCenterDialog" title="Change Work Center" class="sapUiSmallMargin" afterClose=".closeDialog">
+		<content>
+		  <form:SimpleForm editable="true" id="workCenetrForm">
+				<Label text="Work Center"/>
+				<Select id="idSWorkCenter">
+					<core:Item key="ELECENG" text="ELECENG" />
+					<core:Item key="EUS" text="EUS" />
+                    <core:Item key="CONSTRUC" text="CONSTRUC" />
+                    <core:Item key="ELECMTR" text="ELECMTR" />
+				</Select>				
+		  </form:SimpleForm>
+		</content>
+		
+		<buttons>
+		<Button id="btnWSubmit" text="Submit" press=".onWSubmitDialog" />
+		<Button id="btnWCancel" text="Cancel" press=".onWCancelDialog" />
+		</buttons>
+	  </Dialog>
+</core:FragmentDefinition>

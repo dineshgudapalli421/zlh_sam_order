@@ -1,0 +1,122 @@
+<core:FragmentDefinition xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards" xmlns:form="sap.ui.layout.form" xmlns:m="sap.m" xmlns:core="sap.ui.core"     xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:smarttable="sap.ui.comp.smarttable"
+>   
+ <smarttable:SmartTable 
+                id="idSmartOrderDetails"
+                entitySet="OrderDetails"
+                tableBindingPath="OrderDetailsModel>/OrderDetails"
+                tableType="ResponsiveTable"
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                header="Records"
+                showRowCount="true"
+                enableAutoBinding="true"
+                enableExport="false"
+                demandPopin="true"
+                persistencyKey="smartOrderDetails"
+                requestAtLeastFields="oPNo,WorkCenter,Plant,ControlKey,Description,opCode,ProfitCenter,InternalOrder,Status,ESA"
+            >
+            <Table id="tblOrderDetails"
+                ariaLabelledBy="title"
+                rows="{OrderDetailsModel>/OrderDetails}" 
+                enableSelectAll="true"
+                selectionMode="MultiToggle" 
+                selectionBehavior="RowSelector"           
+                enableColumnFreeze="true">    
+                <extension>
+                    <m:OverflowToolbar style="Clear">
+                        <m:Title id="title" text="Records"/>
+                        <m:ToolbarSpacer/>
+                        <m:Button
+							id="idAdd" text="Add"
+							press="onAdd"/>
+                        <m:Button
+                            id="idDispatch" text="Ready for Dispatch"
+                            press="onDispatch"
+                        />
+                        <m:Button
+                            id="idWorkCenter" text="Change Work Center"
+                            press="onChangeWorkCenter" 
+                        />
+                    </m:OverflowToolbar>
+                </extension>            
+                <columns>                    
+                    <Column
+                        width="13rem" hAlign="Center">
+                        <m:Label text="Op No" textAlign="Center" width="100%"/>
+                        <template>
+                             <m:Text textAlign="Center" text="{OrderDetailsModel>oPNo}"/>                           
+                        </template>
+                    </Column>  
+                    <Column
+                        width="13rem" hAlign="Center">
+                        <m:Label text="Work Center" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>WorkCenter}"/>
+                        </template>
+                    </Column>  
+                    <Column
+                        width="11rem" hAlign="Center">
+                        <m:Label text="Plant" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>Plant}"/>
+                        </template>
+                    </Column>  
+                    <Column
+                        width="13rem" hAlign="Center">
+                        <m:Label text="Control Key" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>ControlKey}" />
+                        </template>
+                    </Column>   
+                     <Column
+                       width="13rem" hAlign="Center">
+                        <m:Label text="Description" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>Description}"/>
+                        </template>
+                    </Column>   
+                    <Column
+                       width="13rem" hAlign="Center">
+                        <m:Label text="OP Code" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>opCode}"/>
+                        </template>
+                    </Column>  
+                    <Column
+                       width="13rem" hAlign="Center">
+                        <m:Label text="Profit Center" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>ProfitCenter}"/>
+                        </template>
+                    </Column>
+                    <Column
+                        width="11rem" hAlign="Center">
+                        <m:Label text="Internal Order" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>InternalOrder}"/>
+                        </template>
+                    </Column> 
+                    <Column
+                        width="11rem" hAlign="Center">
+                        <m:Label text="Status" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>Status}"/>
+                        </template>
+                    </Column>
+                    <Column
+                        width="11rem" hAlign="Center">
+                        <m:Label text="ESA Required" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>ESA}"/>
+                        </template>
+                    </Column>   
+                </columns>
+        </Table> 
+        </smarttable:SmartTable>
+</core:FragmentDefinition>

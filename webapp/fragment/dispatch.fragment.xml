@@ -1,0 +1,21 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog id="dispatchDialog" title="Dispatch Status" class="sapUiSmallMargin" afterClose=".closeDialog">
+		<content>
+		  <form:SimpleForm editable="true" id="dispatchForm">
+				<Label text="Status"/>
+				<Select id="idSelectStatus">
+					<core:Item key="ASSD" text="Assigned" />
+					<core:Item key="DISP" text="Ready for Dispatch" />
+				</Select>				
+		  </form:SimpleForm>
+		</content>
+		
+		<buttons>
+		<Button id="btndSubmit" text="Submit" press=".onDSubmitDialog" />
+		<Button id="btndCancel" text="Cancel" press=".onDCancelDialog" />
+		</buttons>
+	  </Dialog>
+</core:FragmentDefinition>
