@@ -1,0 +1,26 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog id="DateDialog" title="Update Start Date" class="sapUiSmallMargin" afterClose=".closeDialog">
+		<content>
+		  <form:SimpleForm editable="true" id="updateDateForm">
+				<Label text="Start Date"/>
+				<DatePicker
+                id="idStartDatepicker"
+                width="80%"
+                valueFormat="YYYY-MM-dd"
+                displayFormat="dd.MM.yyyy"
+                value="{OrderDetailsModel>/startDate}"
+                change="OnChangeCompletedOnDate"
+                
+            />			
+		  </form:SimpleForm>
+		</content>
+		
+		<buttons>
+		<Button id="btnUpdate" text="Submit" press=".onUpdateDialog" />
+		<Button id="btnUCancel" text="Cancel" press=".onUCancelDialog" />
+		</buttons>
+	  </Dialog>
+</core:FragmentDefinition>

@@ -29,7 +29,8 @@ sap.ui.define([
                         "ProfitCenter": "10",
                         "InternalOrder": "12000101",
                         "Status": "Assigned",
-                        "ESA": "N"
+                        "ESA": "N",
+                        "startDate": ""
                     },
                     {
                         "oPNo": "20",
@@ -41,7 +42,8 @@ sap.ui.define([
                         "ProfitCenter": "10",
                         "InternalOrder": "12000000",
                         "Status": "Assigned",
-                        "ESA": "N"
+                        "ESA": "N",
+                        "startDate": ""
                     },
                     {
                         "oPNo": "30",
@@ -53,7 +55,8 @@ sap.ui.define([
                         "ProfitCenter": "10",
                         "InternalOrder": "12000000",
                         "Status": "Ready for Dispatch",
-                        "ESA": "N"
+                        "ESA": "N",
+                        "startDate": ""
                     },
                     {
                         "oPNo": "40",
@@ -65,7 +68,8 @@ sap.ui.define([
                         "ProfitCenter": "10",
                         "InternalOrder": "12000102",
                         "Status": "Ready for Dispatch",
-                        "ESA": "N"
+                        "ESA": "N",
+                        "startDate": ""
                     },
                     {
                         "oPNo": "50",
@@ -77,7 +81,8 @@ sap.ui.define([
                         "ProfitCenter": "10",
                         "InternalOrder": "12000000",
                         "Status": "Ready for Dispatch",
-                        "ESA": "N"
+                        "ESA": "N",
+                        "startDate": ""
                     }
                 ]
             });
@@ -154,6 +159,26 @@ sap.ui.define([
             this.oChangeWCDialog.destroy();
             this.oChangeWCDialog = undefined;
         },
+        onUpdateStartDate: async function (oEvent) {
+            var that = this;
+            var oTable = oController.getView().byId("tblOrderDetails");
+            if (oTable.getSelectedIndices().length === 0) {
+                return MessageBox.error("Please select minimum one row");
+            }
+            this.onUpdateDateDialog ??= await this.loadFragment({
+                name: "com.sap.lh.mr.zlhsamorder.fragment.updateDate"
+            });
+            this.onUpdateDateDialog.open();
+        },
+         onUpdateDialog: function (oEvent) {
+            oController.onUCancelDialog();
+            oController.getView().byId("application-ZLH_SEM_MOCKORD-change-component---Main--filterbar-btnGo").firePress();
+            return MessageBox.success("Start Date updated...");
+        },
+        onUCancelDialog: function (oEvent) {
+            this.onUpdateDateDialog.destroy();
+            this.onUpdateDateDialog = undefined;
+        }
 
     });
 });

@@ -43,6 +43,10 @@
                             id="idWorkCenter" text="Change Work Center"
                             press="onChangeWorkCenter" 
                         />
+                        <m:Button
+                            id="idUStartDate" text="Update Start Date"
+                            press="onUpdateStartDate" 
+                        />
                     </m:OverflowToolbar>
                 </extension>            
                 <columns>                    
@@ -97,9 +101,9 @@
                     </Column>
                     <Column
                         width="11rem" hAlign="Center">
-                        <m:Label text="Internal Order" textAlign="Center" width="100%"/>
+                        <m:Label text="PM Order" textAlign="Center" width="100%"/>
                         <template>
-                            <m:Text textAlign="Center" text="{OrderDetailsModel>InternalOrder}"/>
+                        <m:Link text="{OrderDetailsModel>InternalOrder}" press="onPressOrder" textAlign="Center"/> 
                         </template>
                     </Column> 
                     <Column
@@ -114,6 +118,13 @@
                         <m:Label text="ESA Required" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>ESA}"/>
+                        </template>
+                    </Column> 
+                    <Column
+                        width="11rem" hAlign="Center">
+                        <m:Label text="Start Date" textAlign="Center" width="100%"/>
+                        <template>
+                            <m:Text textAlign="Center" text="{OrderDetailsModel>startDate}"/>
                         </template>
                     </Column>   
                 </columns>
