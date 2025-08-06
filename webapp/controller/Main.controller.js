@@ -20,6 +20,7 @@ sap.ui.define([
             var oOrderDetailsModel = new JSONModel({
                 OrderDetails: [
                     {
+                        "PMOrder": "4000120",
                         "oPNo": "10",
                         "WorkCenter": "ELE",
                         "Plant": "1000",
@@ -33,6 +34,7 @@ sap.ui.define([
                         "startDate": ""
                     },
                     {
+                        "PMOrder": "4000120",
                         "oPNo": "20",
                         "WorkCenter": "ELECENG",
                         "Plant": "1000",
@@ -46,6 +48,7 @@ sap.ui.define([
                         "startDate": ""
                     },
                     {
+                        "PMOrder": "4000120",
                         "oPNo": "30",
                         "WorkCenter": "EUS",
                         "Plant": "1000",
@@ -59,6 +62,7 @@ sap.ui.define([
                         "startDate": ""
                     },
                     {
+                        "PMOrder": "4000652",
                         "oPNo": "40",
                         "WorkCenter": "CONSTRUCT",
                         "Plant": "1000",
@@ -72,6 +76,7 @@ sap.ui.define([
                         "startDate": ""
                     },
                     {
+                        "PMOrder": "4000652",
                         "oPNo": "50",
                         "WorkCenter": "ELECMTR",
                         "Plant": "1000",
@@ -97,7 +102,7 @@ sap.ui.define([
             var aFilter = [];
             const orderId = this.getView().byId("idOrderID").getValue();
             if (orderId !== "") {
-                aFilter.push(new Filter("InternalOrder", FilterOperator.EQ, orderId));
+                aFilter.push(new Filter("PMOrder", FilterOperator.EQ, orderId));
             }
             var oBinding = oTable.getBinding("rows");
             oBinding.filter(aFilter);
@@ -170,7 +175,7 @@ sap.ui.define([
             });
             this.onUpdateDateDialog.open();
         },
-         onUpdateDialog: function (oEvent) {
+        onUpdateDialog: function (oEvent) {
             oController.onUCancelDialog();
             oController.getView().byId("application-ZLH_SEM_MOCKORD-change-component---Main--filterbar-btnGo").firePress();
             return MessageBox.success("Start Date updated...");
@@ -178,7 +183,26 @@ sap.ui.define([
         onUCancelDialog: function (oEvent) {
             this.onUpdateDateDialog.destroy();
             this.onUpdateDateDialog = undefined;
-        }
+        },
+        handleLinkPress: function (oEvent) {
+            var oSource = oEvent.getSource();
+            let oOrderNo = oSource.getText();
+            if (oOrderNo) {
+                var navigationService = sap.ushell.Container.getService("CrossApplicationNavigation");
+                var hash = (navigationService && navigationService.hrefForExternal({
+                    target: { semanticObject: "MaintenanceOrder", action: "change" },
+                    params: {
+                        "AUFNR": oOrderNo,
+                        "sap-app-origin-hint": '',
+                        "sap-ui-tech-hint": "GUI",
+                        "sap-ushell-navmode": "inplace"
+                    }
+                })) || "";
 
+                var url = window.location.href.split('#')[0] + hash;
+                sap.m.URLHelper.redirect(url, true);
+            }
+            console.log(oData);
+        }
     });
 });
