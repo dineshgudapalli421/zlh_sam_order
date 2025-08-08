@@ -14,10 +14,12 @@
 				</Select>
 
 				<Label text="Long Description"/>
-				<Input
+				<TextArea id="idLongDescription"
+					></TextArea>
+				<!-- <Input
 					id="idLongDescription"
 					showSuggestion="true">
-				</Input>
+				</Input> -->
 
 				<Label text="Internal Order"/>				
 				<Input

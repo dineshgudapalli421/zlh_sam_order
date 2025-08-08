@@ -36,6 +36,9 @@
 							id="idAdd" text="Add"
 							press="onAdd"/>
                         <m:Button
+							id="idInternalNumber" text="Add Internal Order"
+							press="onUpdateInternalOrder"/>
+                        <m:Button
                             id="idUStartDate" text="Update Start Date"
                             press="onUpdateStartDate" 
                         />                        
@@ -54,6 +57,7 @@
                         width="11rem" hAlign="Center">
                         <m:Label text="PM Order" textAlign="Center" width="100%"/>
                         <template>
+                        <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>PMOrder}" editable="false" /> -->
                         <m:Link text="{OrderDetailsModel>PMOrder}" press="handleLinkPress" textAlign="Center"/> 
                         </template>
                     </Column>                
@@ -62,6 +66,7 @@
                         <m:Label text="Op No" textAlign="Center" width="100%"/>
                         <template>
                              <m:Text textAlign="Center" text="{OrderDetailsModel>oPNo}"/>                           
+                        <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>oPNo}" editable="false" /> -->
                         </template>
                     </Column>  
                     <Column
@@ -69,6 +74,7 @@
                         <m:Label text="Work Center" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>WorkCenter}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>WorkCenter}" editable="false" /> -->
                         </template>
                     </Column>  
                     <Column
@@ -76,6 +82,7 @@
                         <m:Label text="Plant" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>Plant}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>Plant}" editable="false" /> -->
                         </template>
                     </Column>  
                     <Column
@@ -83,13 +90,16 @@
                         <m:Label text="Control Key" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>ControlKey}" />
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>ControlKey}" editable="false" /> -->
                         </template>
                     </Column>   
                      <Column
                        width="13rem" hAlign="Center">
                         <m:Label text="Description" textAlign="Center" width="100%"/>
                         <template>
+                        <!-- <m:TextArea textAlign="Center" value="{OrderDetailsModel>Description}" /> -->
                             <m:Text textAlign="Center" text="{OrderDetailsModel>Description}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>Description}" editable="false" /> -->
                         </template>
                     </Column>   
                     <Column
@@ -97,6 +107,7 @@
                         <m:Label text="OP Code" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>opCode}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>opCode}" editable="false" /> -->
                         </template>
                     </Column>  
                     <Column
@@ -104,6 +115,7 @@
                         <m:Label text="Profit Center" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>ProfitCenter}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>ProfitCenter}" editable="false" /> -->
                         </template>
                     </Column>
                     <Column
@@ -111,6 +123,7 @@
                         <m:Label text="Internal Order" textAlign="Center" width="100%"/>
                         <template>
                         <m:Text text="{OrderDetailsModel>InternalOrder}" textAlign="Center"/> 
+                         <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>InternalOrder}" editable="false" /> -->
                         </template>
                     </Column> 
                     <Column
@@ -118,6 +131,7 @@
                         <m:Label text="Status" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>Status}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>Status}" editable="false" /> -->
                         </template>
                     </Column>
                     <Column
@@ -125,6 +139,7 @@
                         <m:Label text="ESA Required" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>ESA}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>ESA}" editable="false" /> -->
                         </template>
                     </Column> 
                     <Column
@@ -132,6 +147,7 @@
                         <m:Label text="Start Date" textAlign="Center" width="100%"/>
                         <template>
                             <m:Text textAlign="Center" text="{OrderDetailsModel>startDate}"/>
+                             <!-- <m:Input textAlign="Center" value="{OrderDetailsModel>startDate}" editable="false" /> -->
                         </template>
                     </Column>   
                 </columns>

@@ -1,0 +1,21 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog id="internalOrderDialog" title="Internal Order" class="sapUiSmallMargin" afterClose=".closeDialog">
+		<content>
+		  <form:SimpleForm editable="true" id="internalOrderForm">				
+				<Label text="Internal Order"/>				
+				<Input
+					id="idUInternalOrder"
+					showSuggestion="true">
+				</Input>
+		  </form:SimpleForm>
+		</content>
+		
+		<buttons>
+		<Button id="btnISubmit" text="Update" press=".onSubmitInternalOrder" />
+		<Button id="btnICancel" text="Cancel" press=".onCancelInternalOrder" />
+		</buttons>
+	  </Dialog>
+</core:FragmentDefinition>

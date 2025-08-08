@@ -113,6 +113,38 @@ sap.ui.define([
                 name: "com.sap.lh.mr.zlhsamorder.fragment.newRecord"
             });
             this.oCreateDialog.open();
+
+            // var oModel = oController.getView().getModel("OrderDetailsModel");
+            // var aItems = oModel.getProperty("/OrderDetails");
+            // var oNewRow = {
+            //     "PMOrder": "",
+            //     "oPNo": "",
+            //     "WorkCenter": "",
+            //     "Plant": "",
+            //     "ControlKey": "",
+            //     "Description": "",
+            //     "opCode": "",
+            //     "ProfitCenter": "",
+            //     "InternalOrder": "",
+            //     "Status": "",
+            //     "ESA": "",
+            //     "startDate": ""
+            // };
+            // aItems.push(oNewRow);
+            // oModel.setProperty("/OrderDetails",aItems);
+            // oModel.refresh();
+
+            // var oItem = new sap.m.ColumnListItem({
+            //     cells: [new sap.m.Input(), new sap.m.Input(),
+            //     new sap.m.Input(), new sap.m.Input(),
+            //     new sap.m.Input(), new sap.m.Input(),
+            //     new sap.m.Input(), new sap.m.Input(),
+            //     new sap.m.Input(), new sap.m.Input(),
+            //     new sap.m.Input(), new sap.m.Input()]
+            // });
+
+            // var oTable = oController.getView().byId("tblOrderDetails");
+            // oTable.addRow(oItem);
         },
         onSubmitDialog: function (oEvent) {
             oController.onCancelCreateDialog();
@@ -183,6 +215,23 @@ sap.ui.define([
         onUCancelDialog: function (oEvent) {
             this.onUpdateDateDialog.destroy();
             this.onUpdateDateDialog = undefined;
+        },
+        onUpdateInternalOrder: async function (oEvent) {
+            var that = this;
+            var oTable = oController.getView().byId("tblOrderDetails");
+            this.onUpdateInternalOrderDialog ??= await this.loadFragment({
+                name: "com.sap.lh.mr.zlhsamorder.fragment.internalOrder"
+            });
+            this.onUpdateInternalOrderDialog.open();
+        },
+        onSubmitInternalOrder: function (oEvent) {
+            oController.onCancelInternalOrder();
+            oController.getView().byId("application-ZLH_SEM_MOCKORD-change-component---Main--filterbar-btnGo").firePress();
+            return MessageBox.success("Internal Order updated...");
+        },
+        onCancelInternalOrder: function (oEvent) {
+            this.onUpdateInternalOrderDialog.destroy();
+            this.onUpdateInternalOrderDialog = undefined;
         },
         handleLinkPress: function (oEvent) {
             var oSource = oEvent.getSource();
