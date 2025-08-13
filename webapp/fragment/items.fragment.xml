@@ -50,6 +50,10 @@
                             id="idDispatch" text="Ready for Dispatch"
                             press="onDispatch"
                         />
+                        <m:Button
+                            id="idAttachment" icon="sap-icon://attachment" tooltip="Attachments"
+                            press="onAttachment"
+                        />
                     </m:OverflowToolbar>
                 </extension>            
                 <columns>    

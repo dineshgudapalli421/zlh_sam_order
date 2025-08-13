@@ -233,6 +233,18 @@ sap.ui.define([
             this.onUpdateInternalOrderDialog.destroy();
             this.onUpdateInternalOrderDialog = undefined;
         },
+        onAttachment: async function (oEvent) {
+            var that = this;
+            var oTable = oController.getView().byId("tblOrderDetails");
+            this.onAttachmentDialog ??= await this.loadFragment({
+                name: "com.sap.lh.mr.zlhsamorder.fragment.uploadFile"
+            });
+            this.onAttachmentDialog.open();
+        },
+        onCancelFileUpload: function (oEvent) {
+            this.onAttachmentDialog.destroy();
+            this.onAttachmentDialog = undefined;
+        },
         handleLinkPress: function (oEvent) {
             var oSource = oEvent.getSource();
             let oOrderNo = oSource.getText();
@@ -252,6 +264,28 @@ sap.ui.define([
                 sap.m.URLHelper.redirect(url, true);
             }
             console.log(oData);
+        },
+        handleUploadComplete: function (oEvent) {
+            var sResponse = oEvent.getParameter("response"),
+                aRegexResult = /\d{4}/.exec(sResponse),
+                iHttpStatusCode = aRegexResult && parseInt(aRegexResult[0]),
+                sMessage;
+
+            if (sResponse) {
+                sMessage = iHttpStatusCode === 200 ? sResponse + " (Upload Success)" : sResponse + " (Upload Error)";
+                MessageToast.show(sMessage);
+            }
+        },
+
+        handleUploadPress: function () {
+            var oFileUploader = this.byId("fileUploader");
+            oFileUploader.checkFileReadable().then(function () {
+                oFileUploader.upload();
+            }, function (error) {
+                MessageToast.show("The file cannot be read. It may have changed.");
+            }).then(function () {
+                oFileUploader.clear();
+            });
         }
     });
 });
