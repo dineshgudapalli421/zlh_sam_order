@@ -36,7 +36,13 @@
 							id="idAdd" text="Add"
 							press="onAdd"/>
                         <m:Button
-							id="idInternalNumber" text="Add Internal Order"
+							id="idEdit" text="Edit"
+							press="onEdit"/>
+                        <m:Button
+							id="idDelete" text="Delete"
+							press="onDelete"/>
+                        <m:Button
+							id="idInternalNumber" text="Update Internal Order"
 							press="onUpdateInternalOrder"/>
                         <m:Button
                             id="idUStartDate" text="Update Start Date"
